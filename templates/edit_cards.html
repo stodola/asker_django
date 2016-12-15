@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+	  <div class="col-md-2"></div>
+	    <div class="col-md-8">
+		    {% for obj in qs %}
+		    <h3> Question {{ forloop.counter }}</h3>
+		    <div class="panel panel-primary">
+		    	<div class ="panel-heading"> Question: {{ obj.pytanie }} </div>
+			  
+			    <div class="panel-body">
+
+				  Answer:  {{ obj.odpowiedz }}
+		    </div>
+		</div>
+	    	
+
+
+
+
+
+
+		    <!--	    <div class="btn-group" role="group" aria-label="...">   -->
+		    <a class='btn btn-default' href='/cards/edit/{{ obj.user }}/{{ obj.carddeck }}/{{ obj.id }}'> delete </a>
+		  
+		  
+		    <a  class='btn btn-default' href='/cards/editcard/{{ obj.user }}/{{ obj.carddeck }}/{{ obj.id }}/'> edit </a> 
+		    <!--	    </div> -->
+		    <hr>
+		    {% endfor %}
+
+
+
+	    </div>
+	      <div class="col-md-2"></div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Asker</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Asker</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+	      {% if user.is_authenticated %}
+	      <li><a href="/cards/">Cards</a></li>
+	      <!--      <li><a href="/about/">About</a></li> -->
+	      <!--          <li><a href="#">Contact</a></li> -->
+	      {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+	{% if user.is_authenticated %}
+	    	    <li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{request.user.username}}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/logout/">Log out</a></li>
+		 <li><a href="/cards/">Cards</a></li>
+
+                </ul>
+              </li>
+	{% else %}
+              <li class="active"><a href="/login/">Log in <span class="sr-only">(current)</span></a></li>
+              <li><a href="/register/">Register</a></li>
+	{% endif %}
+	    </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+
+      {% block content %}
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Asker</h1>
+        <p>Asker  allows you to learn any topic you want anywhere you want. </p>
+
+        <p>
+          <a class="btn btn-lg btn-primary" href="/register/" role="button">Sign up to start</a>
+        </p>
+      </div>
+	{% endblock %}
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
+

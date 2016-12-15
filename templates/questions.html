@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+	  <div class="col-md-2"></div>
+	    <div class="col-md-8">
+	  
+
+<div class="panel panel-info">
+	<div class="panel-heading">Pytanie #{{ id }}</div>
+  <div class="panel-body">
+	  {{ pytanie.pytanie }}
+  
+  </div>
+</div>
+
+<div class="btn-group" role="group" aria-label="...">
+	<a href='/cards/{{ user }}/{{ nazwa_pliku }}/{{ id }}/ans' type="button" class="btn btn-default">Answer</a>
+	<a href='/cards/{{ user }}/{{ nazwa_pliku }}/{{ id }}/qq' type="button" class="btn btn-default">Next question</a>
+
+</div>   <!-- button group -->
+
+{% if odpowiedz %}
+
+<hr>
+<div class="panel panel-danger">
+	<div class="panel-heading">Answer #{{ id }}</div>
+	 <div class="panel-body">
+	  {{ odpowiedz.odpowiedz }}
+
+				      </div>
+</div>
+
+
+
+
+
+
+{% endif %}
+
+
+	    </div>
+	      <div class="col-md-2"></div>
+</div>
+
+
+{% endblock %}
+
